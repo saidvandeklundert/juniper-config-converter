@@ -1,0 +1,26 @@
+system {
+    host-name router-1;
+    root-authentication {
+        encrypted-password "$some_hash";
+    }
+    protect: services {
+        ftp;
+        ssh;
+        telnet;
+        netconf {
+            ssh;
+        }
+    }
+    inactive: syslog {
+        user * {
+            any emergency;
+        }
+        file messages {
+            any notice;
+            authorization info;
+        }
+        file interactive-commands {
+            interactive-commands any;
+        }
+    }
+}

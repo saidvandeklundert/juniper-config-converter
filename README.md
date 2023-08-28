@@ -1,2 +1,3 @@
-# juniper-config-converter
-Convert Juniper configurations to 'set-style'
+# JCC: Juniper Config Converter
+
+Convert Juniper configurations.

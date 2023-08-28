@@ -1,0 +1,11 @@
+system {
+    host-name myrouter;
+    services {
+        ftp;
+        ssh;
+        telnet;
+        netconf {
+            ssh;
+        }
+    }
+}

@@ -1,0 +1,6 @@
+system {
+    host-name myrouter;
+    services {
+        ftp;
+    }
+}

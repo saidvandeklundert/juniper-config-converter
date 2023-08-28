@@ -1,0 +1,10 @@
+system {
+    host-name example-hostname;
+    login {
+        class EXAMPLE_CLASS {
+            permissions [ clear maintenance network reset trace view view-configuration ];
+        }
+    }
+    domain-name example.com;
+    time-zone UTC;
+}

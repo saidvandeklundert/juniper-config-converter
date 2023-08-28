@@ -1,0 +1,10 @@
+set system host-name example-hostname
+set system login class EXAMPLE_CLASS permissions clear
+set system login class EXAMPLE_CLASS permissions maintenance
+set system login class EXAMPLE_CLASS permissions network
+set system login class EXAMPLE_CLASS permissions reset
+set system login class EXAMPLE_CLASS permissions trace
+set system login class EXAMPLE_CLASS permissions view
+set system login class EXAMPLE_CLASS permissions view-configuration
+set system domain-name example.com
+set system time-zone UTC

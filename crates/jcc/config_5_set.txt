@@ -1,0 +1,2 @@
+set policy-options policy-statement lb term lb then load-balance per-packet
+set policy-options as-path test "^123 456{2,} 123 456{3,}"

@@ -1,0 +1,513 @@
+vlans {
+    VLAN101 {
+        vlan-id 101;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN102 {
+        vlan-id 102;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN103 {
+        vlan-id 103;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN110 {
+        vlan-id 110;                    
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN310 {
+        vlan-id 310;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN684 {
+        vlan-id 684;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN699 {
+        vlan-id 699;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN700 {                           
+        vlan-id 700;
+        l3-interface irb.700;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN702 {
+        vlan-id 702;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN703 {
+        vlan-id 703;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN704 {
+        vlan-id 704;
+        forwarding-options {
+            dhcp-security;
+        }                               
+    }
+    VLAN705 {
+        vlan-id 705;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN706 {
+        vlan-id 706;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN708 {
+        vlan-id 708;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN709 {
+        vlan-id 709;
+        forwarding-options {
+            dhcp-security;              
+        }
+    }
+    VLAN710 {
+        vlan-id 710;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN711 {
+        vlan-id 711;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN712 {
+        vlan-id 712;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN713 {
+        vlan-id 713;
+        forwarding-options {            
+            dhcp-security;
+        }
+    }
+    VLAN740 {
+        vlan-id 740;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN741 {
+        vlan-id 741;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN800 {
+        vlan-id 800;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN801 {
+        vlan-id 801;                    
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN802 {
+        vlan-id 802;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN811 {
+        vlan-id 811;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN812 {
+        vlan-id 812;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN813 {                           
+        vlan-id 813;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN814 {
+        vlan-id 814;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN815 {
+        vlan-id 815;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN816 {
+        vlan-id 816;
+        forwarding-options {
+            dhcp-security;
+        }
+    }                                   
+    VLAN817 {
+        vlan-id 817;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN818 {
+        vlan-id 818;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN819 {
+        vlan-id 819;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN820 {
+        vlan-id 820;
+        forwarding-options {
+            dhcp-security;
+        }                               
+    }
+    VLAN821 {
+        vlan-id 821;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN822 {
+        vlan-id 822;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN823 {
+        vlan-id 823;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN826 {
+        vlan-id 826;
+        forwarding-options {
+            dhcp-security;              
+        }
+    }
+    VLAN827 {
+        vlan-id 827;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN828 {
+        vlan-id 828;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN829 {
+        vlan-id 829;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN830 {
+        vlan-id 830;
+        forwarding-options {            
+            dhcp-security;
+        }
+    }
+    VLAN831 {
+        vlan-id 831;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN833 {
+        vlan-id 833;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN835 {
+        vlan-id 835;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN836 {
+        vlan-id 836;                    
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN837 {
+        vlan-id 837;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN839 {
+        vlan-id 839;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN840 {
+        vlan-id 840;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN841 {                           
+        vlan-id 841;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN842 {
+        vlan-id 842;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN843 {
+        vlan-id 843;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN844 {
+        vlan-id 844;
+        forwarding-options {
+            dhcp-security;
+        }
+    }                                   
+    VLAN845 {
+        vlan-id 845;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN846 {
+        vlan-id 846;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN847 {
+        vlan-id 847;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN848 {
+        vlan-id 848;
+        forwarding-options {
+            dhcp-security;
+        }                               
+    }
+    VLAN849 {
+        vlan-id 849;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN850 {
+        vlan-id 850;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN851 {
+        vlan-id 851;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN852 {
+        vlan-id 852;
+        forwarding-options {
+            dhcp-security;              
+        }
+    }
+    VLAN854 {
+        vlan-id 854;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN855 {
+        vlan-id 855;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN856 {
+        vlan-id 856;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN857 {
+        vlan-id 857;
+        forwarding-options {            
+            dhcp-security;
+        }
+    }
+    VLAN858 {
+        vlan-id 858;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN859 {
+        vlan-id 859;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN860 {
+        vlan-id 860;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN861 {
+        vlan-id 861;                    
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN862 {
+        vlan-id 862;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN863 {
+        vlan-id 863;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN865 {
+        vlan-id 865;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN866 {                           
+        vlan-id 866;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN867 {
+        vlan-id 867;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN890 {
+        vlan-id 890;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN891 {
+        vlan-id 891;
+        forwarding-options {
+            dhcp-security;
+        }
+    }                                   
+    VLAN892 {
+        vlan-id 892;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN893 {
+        vlan-id 893;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN894 {
+        vlan-id 894;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN895 {
+        vlan-id 895;
+        forwarding-options {
+            dhcp-security;
+        }                               
+    }
+    VLAN898 {
+        vlan-id 898;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN899 {
+        vlan-id 899;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN900 {
+        vlan-id 900;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+    VLAN912 {
+        vlan-id 912;
+        forwarding-options {
+            dhcp-security;              
+        }
+    }
+    VLAN999 {
+        vlan-id 999;
+        forwarding-options {
+            dhcp-security;
+        }
+    }
+}
