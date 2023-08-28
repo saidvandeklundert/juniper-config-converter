@@ -3,7 +3,7 @@
 // cargo test
 
 use log::info; //debug warn
-mod configwriter;
+pub mod configwriter;
 mod lexer;
 mod utils;
 use crate::configwriter::ConfigWriter;
