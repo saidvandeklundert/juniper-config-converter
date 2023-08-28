@@ -9,7 +9,7 @@ mod utils;
 use crate::configwriter::ConfigWriter;
 use crate::utils::open_config_file;
 
-pub fn convert(file_name: &str) {
+pub fn converter(file_name: &str) {
     info!("In the debug, running lib!");
     //let file_name = "config_17";
     let config_file = file_name.to_owned() + ".txt";
@@ -26,4 +26,10 @@ pub fn convert(file_name: &str) {
     );
 
     assert_eq!(config_writer_result, expected);
+}
+
+pub fn convert(configuration: String) -> String {
+    let mut config_writer = ConfigWriter::new(configuration);
+    let config_writer_result = config_writer.write_configs();
+    return config_writer_result;
 }
