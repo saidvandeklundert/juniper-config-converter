@@ -1,0 +1,7 @@
+set system host-name router-1
+set system root-authentication encrypted-password "$some_hash"
+protect system services
+set system services ftp
+set system services ssh
+set system services telnet
+set system services netconf ssh

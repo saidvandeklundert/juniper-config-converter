@@ -1,0 +1,1 @@
+set groups BLOCK-V6 vlans <*> forwarding-options filter input BLOCK-IPv6

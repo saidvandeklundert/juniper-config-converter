@@ -1,27 +1,4 @@
 use log::info;
-use std::fs;
-use std::io::prelude::*;
-use std::path::Path;
-
-// Open a configuration file and return the content as a String:
-pub fn open_config_file(file_path: &str) -> String {
-    let path = Path::new(file_path);
-    let display = path.display();
-
-    let mut file = match fs::File::open(&path) {
-        Err(error) => panic!("could not open {}: {}", display, error),
-        Ok(file) => file,
-    };
-
-    let mut string = String::new();
-
-    match file.read_to_string(&mut string) {
-        Err(error) => panic!("could not read {}: {}", display, error),
-        Ok(_) => {
-            return string;
-        }
-    }
-}
 
 // Take the stanza_stack_record and the config_line_stack to produce a syntactically valid Juniper
 // set configuration command.

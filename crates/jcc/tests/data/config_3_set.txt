@@ -1,0 +1,5 @@
+set system host-name myrouter
+set system services ftp
+set system services ssh
+set system services telnet
+set system services netconf ssh

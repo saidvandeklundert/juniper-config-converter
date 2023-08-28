@@ -1,0 +1,10 @@
+system {
+    scripts {
+        inactive: commit {
+            file COMMIT_SCRIPT.py {
+                optional;
+                checksum sha-256 BD94760347BABBB0B12ADFEB41FF01B90DD7F4C16F9B6C2088CD2526F6223898;
+            }
+        }
+    }
+}

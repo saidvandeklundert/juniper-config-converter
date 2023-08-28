@@ -1,0 +1,11 @@
+policy-options {
+    policy-statement directs {
+        term Lo0 {
+            from {
+                protocol direct;
+                route-filter 192.168.100.0/24 orlonger;
+            }
+            then accept;
+        }
+    }   
+}

@@ -1,0 +1,10 @@
+policy-options {
+    policy-statement lb {
+        term lb {
+            then {
+                load-balance per-packet;
+            }
+        }
+    }
+    as-path test "^123 456{2,} 123 456{3,}";
+}

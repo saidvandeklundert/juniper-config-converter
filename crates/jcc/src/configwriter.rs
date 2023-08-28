@@ -183,7 +183,6 @@ impl ConfigWriter {
 #[cfg(test)]
 mod test {
     use super::{ConfigWriter, Lexer, Token};
-    use crate::utils::open_config_file;
 
     #[test]
     fn basic_identifiers_test() {
@@ -261,39 +260,5 @@ set policy-options policy-statement directs term Lo0 then accept",
         let mut config_writer = ConfigWriter::new(&input);
         let result = config_writer.write_configs();
         assert_eq!(result, expected);
-    }
-
-    #[test]
-    fn config_convert_files() {
-        let files: Vec<&str> = vec![
-            "config_1",
-            "config_2",
-            "config_3",
-            "config_4",
-            "config_5",
-            "config_6",
-            "config_7",
-            "config_8",
-            "config_9",
-            "config_10",
-            "config_11",
-            "config_12",
-            "config_13",
-            "config_14",
-            "config_15",
-            "config_16",
-            "config_17",
-        ];
-        for filename in files {
-            let filename_text = filename.to_owned() + ".txt";
-            let file_name_set = filename.to_owned() + "_set.txt";
-            let config = open_config_file(&filename_text);
-
-            let expected = open_config_file(&file_name_set);
-
-            let mut config_writer = ConfigWriter::new(&config);
-            let result = config_writer.write_configs();
-            assert_eq!(result, expected);
-        }
     }
 }

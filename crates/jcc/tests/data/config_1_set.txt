@@ -1,0 +1,3 @@
+set policy-options policy-statement directs term Lo0 from protocol direct
+set policy-options policy-statement directs term Lo0 from route-filter 192.168.100.0/24 orlonger
+set policy-options policy-statement directs term Lo0 then accept

@@ -1,0 +1,12 @@
+set system host-name router-1
+set system root-authentication encrypted-password "$some_hash"
+protect system services
+set system services ftp
+set system services ssh
+set system services telnet
+set system services netconf ssh
+deactivate system syslog
+set system syslog user * any emergency
+set system syslog file messages any notice
+set system syslog file messages authorization info
+set system syslog file interactive-commands interactive-commands any

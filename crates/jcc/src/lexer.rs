@@ -153,17 +153,28 @@ impl Lexer {
 #[cfg(test)]
 mod test {
     use super::{Lexer, Token};
-    use crate::utils::open_config_file;
 
     #[test]
     fn instantiate_lexer() {
         let input = String::from("{ example }");
         let _ = Lexer::new(&input);
     }
-
     #[test]
     fn tokenize_file_test() {
-        let input = open_config_file("config_3.txt");
+        let input = String::from(
+            "system {
+            host-name myrouter;
+            services {
+                ftp;
+                ssh;
+                telnet;
+                netconf {
+                    ssh;
+                }
+            }
+        }
+        ",
+        );
         let expected = vec![
             Token::Identifier("system".to_string()),
             Token::LeftSquirly,
