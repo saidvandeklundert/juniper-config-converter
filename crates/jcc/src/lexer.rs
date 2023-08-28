@@ -44,7 +44,7 @@ pub struct Lexer {
 }
 
 impl Lexer {
-    pub fn new(source: String) -> Lexer {
+    pub fn new(source: &str) -> Lexer {
         let characters: Vec<char> = source.chars().collect();
         let end = characters.len();
         let mut lex = Lexer {
@@ -158,7 +158,7 @@ mod test {
     #[test]
     fn instantiate_lexer() {
         let input = String::from("{ example }");
-        let _ = Lexer::new(input);
+        let _ = Lexer::new(&input);
     }
 
     #[test]
@@ -188,7 +188,7 @@ mod test {
             Token::NewLine,
             Token::Eof,
         ];
-        let mut lexer = Lexer::new(input);
+        let mut lexer = Lexer::new(&input);
         let tokens = lexer.tokenize();
         assert_eq!(tokens, expected);
     }

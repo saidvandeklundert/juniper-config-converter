@@ -11,23 +11,9 @@ pub struct ConfigWriter {
 }
 
 impl ConfigWriter {
-    pub fn new(config: String) -> ConfigWriter {
+    pub fn new(config: &str) -> ConfigWriter {
         let mut lexer = Lexer::new(config);
-        let mut tokens = Vec::new();
-
-        {
-            // fill tokens:
-            let mut n = 0;
-            let mut token = lexer.next_token();
-            tokens.push(token.clone());
-            debug!("{token}");
-            while token != Token::Eof {
-                n = n + 1;
-                token = lexer.next_token();
-                info!("{token}");
-                tokens.push(token.clone());
-            }
-        }
+        let tokens = lexer.tokenize();
         debug!("Tokenization done!!\n\n\n");
         info!("{:#?}", tokens);
         let output: Vec<String> = Vec::new();
@@ -203,7 +189,7 @@ mod test {
     fn basic_identifiers_test() {
         let input = String::from("{ as-path test another-statement-123 } } }");
 
-        let mut lexer = Lexer::new(input);
+        let mut lexer = Lexer::new(&input);
 
         let tokens: Vec<Token> = vec![
             Token::LeftSquirly,
@@ -246,7 +232,7 @@ set system services ssh
 set system services telnet
 set system services netconf ssh",
         );
-        let mut config_writer = ConfigWriter::new(input.clone());
+        let mut config_writer = ConfigWriter::new(&input);
         let result = config_writer.write_configs();
         assert_eq!(result, expected);
     }
@@ -272,7 +258,7 @@ set system services netconf ssh",
 set policy-options policy-statement directs term Lo0 from route-filter 192.168.100.0/24 orlonger
 set policy-options policy-statement directs term Lo0 then accept",
         );
-        let mut config_writer = ConfigWriter::new(input.clone());
+        let mut config_writer = ConfigWriter::new(&input);
         let result = config_writer.write_configs();
         assert_eq!(result, expected);
     }
@@ -305,7 +291,7 @@ set policy-options policy-statement directs term Lo0 then accept",
 
             let expected = open_config_file(&file_name_set);
 
-            let mut config_writer = ConfigWriter::new(config);
+            let mut config_writer = ConfigWriter::new(&config);
             let result = config_writer.write_configs();
             assert_eq!(result, expected);
         }
