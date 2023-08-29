@@ -1,13 +1,7 @@
-/*
-
-    RUST_LOG=debug cargo run -- --help
-    cargo run -- --file config_17
-    cargo run -- --file config_17 -v v
-*/
 use clap::Parser;
 use env_logger::Env;
-use jcc::ConfigWriter;
-
+use jcc::convert;
+use log::info;
 use std::fs;
 use std::io::prelude::*;
 use std::path::Path;
@@ -15,7 +9,7 @@ use std::path::Path;
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
 struct Args {
-    /// Name of the file to open, e.g.: /home/klundert/rust/projects/jsc
+    /// Name of the file to open, e.g.: /tmp/config.txt
     #[arg(short, long)]
     file: String,
 
@@ -34,8 +28,9 @@ fn get_log_level(verbose: &str) -> &str {
     }
 }
 
-fn open_config_file(file_path: &str) -> String {
-    let path = Path::new(file_path);
+//Open target configuration file.
+fn open_config_file(file: &str) -> String {
+    let path = Path::new(file);
     let display = path.display();
 
     let mut file = match fs::File::open(&path) {
@@ -60,10 +55,10 @@ fn main() {
         .write_style_or("MY_LOG_STYLE", "always");
     env_logger::init_from_env(env);
 
-    println!("Hello {}!", args.file);
     let config = open_config_file(&args.file);
 
-    let mut config_writer = ConfigWriter::new(config);
-    let config_writer_result = config_writer.write_configs();
-    println!("Output:\n\n{config_writer_result}");
+    let converted_config = convert(&config);
+    info!("Config to translate:\n{}", config);
+    info!("Translated configuration:\n");
+    println!("{}", converted_config);
 }

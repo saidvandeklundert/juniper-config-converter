@@ -1,2 +1,0 @@
-set system host-name myrouter
-set system services ftp

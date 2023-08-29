@@ -1,6 +1,0 @@
-set policy-options policy-statement directs term Lo0 from protocol direct
-set policy-options policy-statement directs term Lo0 from route-filter 192.168.100.0/24 orlonger
-set policy-options policy-statement directs term Lo0 then accept
-set policy-options policy-statement lbpp term 1 then load-balance per-packet
-set policy-options policy-statement lb term lb then load-balance per-packet
-set policy-options as-path test "^123 456{2,} 123 456{3,}"

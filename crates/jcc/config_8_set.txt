@@ -1,3 +1,0 @@
-deactivate system scripts commit
-set system scripts commit file COMMIT_SCRIPT.py optional
-set system scripts commit file COMMIT_SCRIPT.py checksum sha-256 BD94760347BABBB0B12ADFEB41FF01B90DD7F4C16F9B6C2088CD2526F6223898
