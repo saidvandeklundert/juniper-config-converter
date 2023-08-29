@@ -34,6 +34,9 @@ The `jcc` crate exposes the function `convert` so you can use it inside your own
 Example usage:
 
 ```
+# cargo install jcc-cli
+
+
 # cat /tmp/config_1.txt 
 policy-options {
     policy-statement directs {
@@ -46,7 +49,6 @@ policy-options {
         }
     }   
 }
-
 
 
 # jcc-cli --file /tmp/config_1.txt
