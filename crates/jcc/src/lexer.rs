@@ -78,9 +78,11 @@ impl Lexer {
         }
     }
 
+    // check what character is available at the next read_position
     fn peek(&self) -> char {
         return self.source[self.read_position];
     }
+
     pub fn tokenize(&mut self) -> Vec<Token> {
         let mut tokens = Vec::new();
 
@@ -134,6 +136,8 @@ impl Lexer {
         debug!("next token:\n{token}");
         return token;
     }
+
+    // move the position forward as long as the character being read is a whitespace:
     fn skip_whitespace(&mut self) {
         while self.character == ' ' {
             self.read_char();
@@ -180,7 +184,43 @@ mod test {
     }
 
     #[test]
-    fn tokenize_file_test() {
+    fn tokens() {
+        let input = String::from(
+            r##"word1234 {
+        } } ;
+        "some comment" ;
+        { }
+        # words [ ] 
+        "##,
+        );
+        let expected = vec![
+            Token::Identifier("word1234".to_string()),
+            Token::LeftSquirly,
+            Token::NewLine,
+            Token::RightSquirly,
+            Token::RightSquirly,
+            Token::Semicolon,
+            Token::NewLine,
+            Token::Identifier(r#""some comment""#.to_string()),
+            Token::Semicolon,
+            Token::NewLine,
+            Token::LeftSquirly,
+            Token::RightSquirly,
+            Token::NewLine,
+            Token::Pound,
+            Token::Identifier("words".to_string()),
+            Token::LeftBracket,
+            Token::RightBracket,
+            Token::NewLine,
+            Token::Eof,
+        ];
+        let mut lexer = Lexer::new(&input);
+        let tokens = lexer.tokenize();
+        assert_eq!(tokens, expected);
+    }
+
+    #[test]
+    fn tokenize_system_config() {
         let input = String::from(
             "system {
             host-name myrouter;
