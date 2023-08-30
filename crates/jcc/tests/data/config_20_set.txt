@@ -1,0 +1,7 @@
+set apply-groups "${node}"
+set apply-groups "${node1*9))()*)&)&}"
+set system login idle-timeout 30
+set system login class admin idle-timeout 30
+set system login class admin permissions all
+set system login class admin allow-commands "^(configure|edit) exclusive"
+set system login class admin deny-commands "^(configure|edit)"

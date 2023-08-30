@@ -1,0 +1,53 @@
+groups {
+    DRAIN {
+    policy-options {
+        policy-statement <*-ACTIVE> {
+            term <*> {
+                then as-path-prepend "213 123";
+            }
+        }
+    }
+}
+    SYSLOG_SERVERS {
+        system {
+            syslog {
+                host <*> {
+                    any notice;
+                    interactive-commands any;
+                    match "!((.*%&*(*&)(&)&.*))";
+                    facility-override local7;
+                    source-address 10.81.41.21;
+                    explicit-priority;
+                }
+            }
+        }
+    }                                       
+    node0 {
+        interfaces {
+            fxp0 {
+                unit 0 {
+                    family inet {
+                        address 71.0.0.1/22;
+                    }
+                    family inet6 {
+                        address 2100:1:1:1::cafe:a1/64;
+                    }
+                }
+            }
+        }
+    }
+    node1 {
+        interfaces {
+            fxp0 {
+                unit 0 {
+                    family inet {
+                        address 71.0.4.1/22;
+                    }
+                    family inet6 {
+                        address 2100:1:1:1::cafe:a2/64;
+                    }
+                }
+            }
+        }
+    }
+}

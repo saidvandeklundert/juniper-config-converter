@@ -1,4 +1,4 @@
-use log::debug;
+use log::{debug, warn};
 use std::fmt::Display;
 
 #[allow(dead_code)]
@@ -58,6 +58,8 @@ impl Lexer {
         lex.read_char();
         return lex;
     }
+
+    // read a character from the source code:
     fn read_char(&mut self) {
         if self.read_position >= self.source.len() {
             self.character = '0';
@@ -67,8 +69,18 @@ impl Lexer {
 
         self.position = self.read_position;
         self.read_position += 1;
+        debug!("read_char character: {:#?}", self.character);
+        if self.read_position < self.end {
+            debug!(
+                "read_char read_position: {:#?}",
+                self.source[self.read_position]
+            );
+        }
     }
 
+    fn peek(&self) -> char {
+        return self.source[self.read_position];
+    }
     pub fn tokenize(&mut self) -> Vec<Token> {
         let mut tokens = Vec::new();
 
@@ -111,14 +123,11 @@ impl Lexer {
             | '.'
             | '\\'
             | '/'
-            | '>' => {
-                let statement = self.read_identifier();
-                match statement.as_str() {
-                    "placeholder" => Token::Identifier(String::from("placeholder")),
-                    _ => Token::Identifier(statement),
-                }
+            | '>' => Token::Identifier(self.read_identifier()),
+            _ => {
+                warn!("unkown token: {:#?}", self.character);
+                Token::Unkown(String::from(self.character as char))
             }
-            _ => Token::Unkown(String::from(self.character as char)),
         };
 
         self.read_char();
@@ -142,12 +151,22 @@ impl Lexer {
             }
         }
 
-        while !self.character.is_whitespace() && self.character != '\n' {
+        // read identifiers that are not enclosed in a comma:
+        while !self.character.is_whitespace() {
             self.read_char();
+            if self.peek() == '\n' {
+                break;
+            }
         }
-        let word: String = String::from_iter(&self.source[position..self.position]);
+        let mut word: String = String::from_iter(&self.source[position..self.position + 1]);
+        word = remove_trailing_whitespace(&word);
+        debug!("read_identifier word: {:#?}", word);
         return word;
     }
+}
+
+fn remove_trailing_whitespace(s: &str) -> String {
+    s.trim().to_string()
 }
 
 #[cfg(test)]
@@ -159,6 +178,7 @@ mod test {
         let input = String::from("{ example }");
         let _ = Lexer::new(&input);
     }
+
     #[test]
     fn tokenize_file_test() {
         let input = String::from(
@@ -181,16 +201,21 @@ mod test {
             Token::NewLine,
             Token::Identifier("host-name".to_string()),
             Token::Identifier("myrouter;".to_string()),
+            Token::NewLine,
             Token::Identifier("services".to_string()),
             Token::LeftSquirly,
             Token::NewLine,
             Token::Identifier("ftp;".to_string()),
+            Token::NewLine,
             Token::Identifier("ssh;".to_string()),
+            Token::NewLine,
             Token::Identifier("telnet;".to_string()),
+            Token::NewLine,
             Token::Identifier("netconf".to_string()),
             Token::LeftSquirly,
             Token::NewLine,
             Token::Identifier("ssh;".to_string()),
+            Token::NewLine,
             Token::RightSquirly,
             Token::NewLine,
             Token::RightSquirly,

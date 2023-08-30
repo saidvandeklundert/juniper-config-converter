@@ -1,0 +1,13 @@
+apply-groups "${node}";
+# End of template groups
+system {
+    login {
+        idle-timeout 30;
+        class admin {
+            idle-timeout 30;
+            permissions all;
+            allow-commands "^(configure|edit) exclusive";
+            deny-commands "^(configure|edit)";
+        }
+    }
+}

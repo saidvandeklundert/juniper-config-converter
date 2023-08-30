@@ -69,6 +69,9 @@ fn config_convert_files() {
         "config_15",
         "config_16",
         "config_17",
+        "config_18",
+        "config_19",
+        "config_20",
     ];
     for filename in files {
         let filename_text = filename.to_owned() + ".txt";
