@@ -63,3 +63,15 @@ Currently in Beta.
 Future plans:
 - polish the package
 - also convert configurations into useful data structures
+
+
+
+## For Windows users:
+
+In case the linker is not found when using cargo install, you can read [this](https://stackoverflow.com/questions/55603111/unable-to-compile-rust-hello-world-on-windows-linker-link-exe-not-found) and/or try this:
+```
+rustup uninstall toolchain stable-x86_64-pc-windows-msvc
+rustup toolchain install stable-x86_64-pc-windows-gnu
+rustup default stable-x86_64-pc-windows-gnu
+cargo install jcc-cli
+```
