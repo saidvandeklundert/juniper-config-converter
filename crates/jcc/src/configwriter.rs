@@ -118,6 +118,8 @@ impl ConfigWriter {
                         next_inactive = true;
                     } else if statement == "protect:" {
                         next_protect = true;
+                    } else if statement == "replace:" {
+                        ()
                     } else {
                         debug!("non terminating statement {statement}");
                         stanza_stack.push(statement.clone().to_owned());

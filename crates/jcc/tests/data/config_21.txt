@@ -1,0 +1,14 @@
+replace: chassis {
+    aggregated-devices {
+        ethernet {
+            device-count 8;
+        }
+    }
+    cluster {
+      control-link-recovery;
+      redundancy-group 0 {
+        node 0 priority 254;
+        node 1 priority 1;
+        }
+    }
+}

@@ -1,0 +1,4 @@
+set chassis aggregated-devices ethernet device-count 8
+set chassis cluster control-link-recovery
+set chassis cluster redundancy-group 0 node 0 priority 254
+set chassis cluster redundancy-group 0 node 1 priority 1
