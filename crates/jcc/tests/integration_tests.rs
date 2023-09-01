@@ -1,23 +1,40 @@
 use jcc::convert;
-use std::fs;
+use std::fs::{self};
 use std::io::prelude::*;
 use std::path::Path;
+
+// Read the file paths in a directory so that everytime we place a config and set config file
+// in tests/data/, we can automatically collect them as test cases:
+fn read_dirs() -> Vec<String> {
+    let paths = fs::read_dir(&Path::new("tests/data/")).unwrap();
+
+    let names = paths
+        .map(|entry| {
+            let entry = entry.unwrap();
+
+            let entry_path = entry.path();
+
+            let file_path_as_str = entry_path.to_str().unwrap();
+
+            let file_path_as_string = String::from(file_path_as_str);
+
+            file_path_as_string
+        })
+        .filter(|element| !element.contains("_set"))
+        .collect::<Vec<String>>();
+    names
+}
 // Open a configuration file and return the content as a String:
 fn open_config_file(file_path: &str) -> String {
-    let to_open = "tests/data/".to_owned() + &file_path.to_owned();
-
-    let path = Path::new(&to_open);
-    let display = path.display();
-
-    let mut file = match fs::File::open(&path) {
-        Err(error) => panic!("could not open {}: {}", display, error),
+    let mut file = match fs::File::open(&file_path) {
+        Err(error) => panic!("could not open {}: {}", file_path, error),
         Ok(file) => file,
     };
 
     let mut string = String::new();
 
     match file.read_to_string(&mut string) {
-        Err(error) => panic!("could not read {}: {}", display, error),
+        Err(error) => panic!("could not read {}: {}", file_path, error),
         Ok(_) => {
             return string;
         }
@@ -49,34 +66,17 @@ set policy-options policy-statement directs term Lo0 then accept",
     assert_eq!(result, expected);
 }
 
+// Integration test that:
+// - reads all filenames from /test/data
+// - opens all the combinations of config_x.txt and config_x_set.txt
+// - converts the config_x.txt to 'set'-style config
+// - asserts the converted configuration is the same as the config_x_set.txt file content
 #[test]
 fn config_convert_files() {
-    let files: Vec<&str> = vec![
-        "config_1",
-        "config_2",
-        "config_3",
-        "config_4",
-        "config_5",
-        "config_6",
-        "config_7",
-        "config_8",
-        "config_9",
-        "config_10",
-        "config_11",
-        "config_12",
-        "config_13",
-        "config_14",
-        "config_15",
-        "config_16",
-        "config_17",
-        "config_18",
-        "config_19",
-        "config_20",
-        "config_21",
-    ];
+    let files: Vec<String> = read_dirs();
     for filename in files {
-        let filename_text = filename.to_owned() + ".txt";
-        let file_name_set = filename.to_owned() + "_set.txt";
+        let filename_text = filename.to_owned();
+        let file_name_set = filename.to_owned().replace(".txt", "_set.txt");
         let config = open_config_file(&filename_text);
 
         let expected = open_config_file(&file_name_set);
