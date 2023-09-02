@@ -1,5 +1,5 @@
 routing-instances {
-    REIA {
+    INSTANCE {
         routing-options {
             static {
                 route 1.1.1.0/31 discard;
