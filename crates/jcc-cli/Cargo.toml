@@ -11,5 +11,5 @@ license = "MIT"
 log = "0.4.20"
 env_logger = "0.10.0"
 clap = { version = "4.4.0", features = ["derive"] }
-jcc = "0..2.0"
+jcc = "0.2.0"
 
