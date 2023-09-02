@@ -125,6 +125,7 @@ impl Lexer {
             | '.'
             | '\\'
             | '/'
+            | ':'
             | '>' => Token::Identifier(self.read_identifier()),
             _ => {
                 warn!("unkown token: {:#?}", self.character);
