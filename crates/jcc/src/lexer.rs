@@ -60,6 +60,7 @@ impl Lexer {
     }
 
     // read a character from the source code:
+    #[inline]
     fn read_char(&mut self) {
         if self.read_position >= self.source.len() {
             self.character = '0';
@@ -107,6 +108,8 @@ impl Lexer {
             return Token::Eof;
         }
         let token = match self.character {
+            'a'..='z' | 'A'..='Z' => Token::Identifier(self.read_identifier()),
+            '0'..='9' => Token::Identifier(self.read_identifier()),
             '{' => Token::LeftSquirly,
             '}' => Token::RightSquirly,
             ';' => Token::Semicolon,
@@ -114,19 +117,10 @@ impl Lexer {
             ']' => Token::RightBracket,
             '#' => Token::Pound,
             '\n' => Token::NewLine,
-            'a'..='z'
-            | 'A'..='Z'
-            | '"'
-            | '-'
-            | '0'..='9'
-            | '^'
-            | '<'
-            | '*'
-            | '.'
-            | '\\'
-            | '/'
-            | ':'
-            | '>' => Token::Identifier(self.read_identifier()),
+            ':' => Token::Identifier(self.read_identifier()),
+            '"' => Token::Identifier(self.read_identifier()),
+            '-' => Token::Identifier(self.read_identifier()),
+            '^' | '<' | '*' | '.' | '\\' | '/' | '>' => Token::Identifier(self.read_identifier()),
             _ => {
                 warn!("unkown token: {:#?}", self.character);
                 Token::Unkown(String::from(self.character as char))
@@ -145,6 +139,7 @@ impl Lexer {
         }
     }
 
+    #[inline]
     fn read_identifier(&mut self) -> String {
         let position = self.position;
 
