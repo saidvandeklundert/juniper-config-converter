@@ -1,6 +1,6 @@
 [package]
 name = "jcc"
-version = "0.1.5"
+version = "0.2"
 edition = "2021"
 description = "Convert Juniper configurations to set-style"
 license = "MIT"
